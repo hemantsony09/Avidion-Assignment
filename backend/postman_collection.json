@@ -1,0 +1,192 @@
+{
+  "info": {
+    "name": "Campaign Manager API",
+    "description": "Complete API collection for Campaign Manager with PostgreSQL",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_postman_id": "campaign-manager-api",
+    "version": "1.0.0"
+  },
+  "item": [
+    {
+      "name": "Health Check",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/health",
+          "host": ["{{base_url}}"],
+          "path": ["health"]
+        },
+        "description": "Check API and database connection status"
+      },
+      "response": []
+    },
+    {
+      "name": "Get All Campaigns",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/campaigns",
+          "host": ["{{base_url}}"],
+          "path": ["campaigns"]
+        },
+        "description": "Retrieve all campaigns from database"
+      },
+      "response": []
+    },
+    {
+      "name": "Get Campaign by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/campaigns/:id",
+          "host": ["{{base_url}}"],
+          "path": ["campaigns", ":id"],
+          "variable": [
+            {
+              "key": "id",
+              "value": "1",
+              "description": "Campaign ID"
+            }
+          ]
+        },
+        "description": "Get a specific campaign by ID"
+      },
+      "response": []
+    },
+    {
+      "name": "Create Campaign",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Summer Promotion\",\n  \"type\": \"Email\",\n  \"description\": \"Special summer discount campaign for all customers\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/campaigns",
+          "host": ["{{base_url}}"],
+          "path": ["campaigns"]
+        },
+        "description": "Create a new campaign with validation"
+      },
+      "response": []
+    },
+    {
+      "name": "Update Campaign (Full)",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Updated Campaign Name\",\n  \"type\": \"WhatsApp\",\n  \"description\": \"Updated description for the campaign\",\n  \"status\": \"Active\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/campaigns/:id",
+          "host": ["{{base_url}}"],
+          "path": ["campaigns", ":id"],
+          "variable": [
+            {
+              "key": "id",
+              "value": "1"
+            }
+          ]
+        },
+        "description": "Full update of campaign (all fields)"
+      },
+      "response": []
+    },
+    {
+      "name": "Partial Update Campaign",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"status\": \"Active\",\n  \"sent\": 1500,\n  \"replies\": 400\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/campaigns/:id",
+          "host": ["{{base_url}}"],
+          "path": ["campaigns", ":id"],
+          "variable": [
+            {
+              "key": "id",
+              "value": "1"
+            }
+          ]
+        },
+        "description": "Partial update (status, sent, replies only)"
+      },
+      "response": []
+    },
+    {
+      "name": "Delete Campaign",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/campaigns/:id",
+          "host": ["{{base_url}}"],
+          "path": ["campaigns", ":id"],
+          "variable": [
+            {
+              "key": "id",
+              "value": "1"
+            }
+          ]
+        },
+        "description": "Delete a campaign by ID"
+      },
+      "response": []
+    },
+    {
+      "name": "Create Campaign - Validation Error Example",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"AB\",\n  \"type\": \"Invalid\",\n  \"description\": \"Short\"\n}"
+        },
+        "url": {
+          "raw": "{{base_url}}/campaigns",
+          "host": ["{{base_url}}"],
+          "path": ["campaigns"]
+        },
+        "description": "Test validation - should return 400 error"
+      },
+      "response": []
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:3001",
+      "type": "string"
+    }
+  ]
+}
+
