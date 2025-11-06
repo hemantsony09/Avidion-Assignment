@@ -5,7 +5,7 @@ A full-stack campaign management application built with Next.js (frontend) and E
 ## Project Structure
 
 ```
-demo/
+Avidion-Assignment/
 ├── frontend/          # Next.js frontend application
 │   ├── app/          # Next.js app directory
 │   ├── package.json
@@ -50,8 +50,8 @@ Download and install from [PostgreSQL official website](https://www.postgresql.o
 ### 1. Clone the Repository
 
 ```bash
-git clone <repository-url>
-cd demo
+git clone https://github.com/hemantsony09/Avidion-Assignment
+cd Avidion-Assignment
 ```
 
 ### 2. Backend Setup
